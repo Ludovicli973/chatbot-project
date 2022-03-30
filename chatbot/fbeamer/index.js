@@ -39,11 +39,13 @@ class FBeamer {
     return (req, res, buf) => {
       if (req.method === 'POST') {
         try {
-          x_hub_signatures = req.headers['x-hub-signature']
-          let tempo_hash = crypto.createHmac('sha1', this.FB_APP_SECRET).update(buf, 'utf-8');
+          //console.log(req.headers['x-hub-signature']);
+          // = req.headers['x-hub-signature'];
+          let tempo_hash = crypto.createHmac('sha1',this.FB_APP_SECRET).update(buf, 'utf-8');
           let hash = tempo_hash.digest('hex');
 
-          if (x_hub_signatures === ("sha1=" + hash)) {
+          if (req.headers["x-hub-signature"] === ("sha1=" + hash)) {
+            console.log("-------------------------- NEW MESSAGE --------------------------")
             console.log("Matching signatures!")
             return true;
           }
@@ -63,7 +65,7 @@ class FBeamer {
   messageHandler(obj) {
     let sender = obj.sender.id;
     let message = obj.message;
-    console.log("Message received:", obj.message);
+    console.log("Message received:", obj.message.text);
     
     if (message.text) {
       let obj = {

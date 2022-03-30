@@ -1,15 +1,23 @@
-OK - Réception messages
+OK - Réception messages 
 
 TODO - NLP
-    WIT ?
-    Regex
+    WIT -> "i liked X, what can i cook next ?" -> intent : cook , entity : X
+liked, disliked, forget one of my liked, forget one of my disliked, forget everything
+
+find_new_recipe : i liked X, what can i do now ? => not based on user_preferences
+
+liked_previous_recipe : i liked X
+
+disliked_previous_recipe : i disliked X
+
+suggest_recipes_from_preferences : what can i cook today ?
+
 
 TODO - Computation
     Cosine method
 
-TODO - API
-    
+TODO - API (get recipe or calories of recipe 'rapidAPI') -> Give me a recipe for cookies
 
-TODO - Compute message to send back
+TODO - Compute message to send back (emoji, photos ...)
 
 OK - Send message back
